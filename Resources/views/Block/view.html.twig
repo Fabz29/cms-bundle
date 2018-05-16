@@ -1,0 +1,11 @@
+{% if isEditable %}
+    <label class="block_editable" for="modal_{{ block.id }}">
+        {{ block.richContent|raw }}
+    </label>
+    {{ render(controller('Fabz29CmsBundle:Block:edit', {keyName : block.keyName})) }}
+{% else %}
+    {{ block.richContent|raw }}
+{% endif %}
+
+
+

@@ -1,0 +1,32 @@
+{
+  "name": "fabz29/cmsBundle",
+  "type": "symfony-bundle",
+  "description": "Fabz29CmsBundle is a Symfony Bundle allows a typical user to modify their website directly from the front-end interface",
+  "keywords": ["Fabz29 cms"],
+  "require": {
+    "php": ">=7.2",
+    "symfony/framework-bundle": "^4.0",
+    "kms/froala-editor-bundle": "dev-master",
+    "doctrine/orm": "^2.5"
+  },
+  "license": "proprietary",
+  "author": [
+    {
+      "name": "Fabien Zanetti",
+      "email": "fabienzanetti57@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Fabz29\\CmsBundle\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Fabz29\\CmsBundle\\Tests\\": "/Tests/"
+    }
+  }
+}

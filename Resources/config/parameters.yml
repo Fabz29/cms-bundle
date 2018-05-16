@@ -1,0 +1,3 @@
+parameters:
+    lwb_cms:
+        roles_allowed: ['ROLE_ADMIN']

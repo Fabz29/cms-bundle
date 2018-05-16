@@ -1,0 +1,21 @@
+<input class="modal-state" id="modal_{{ block.id }}" type="checkbox"/>
+<div class="modal">
+    <label class="modal__bg" for="modal_{{ block.id }}"></label>
+    <div class="modal__inner">
+        <label class="modal__close" for="modal_{{ block.id }}"></label>
+        {{ form_start(form, {'method': 'post', 'action' : path('cms_block_edit', {KeyName : block.keyName}), 'attr': {'class' : 'cms_block_edit_form'} }) }}
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.richContent) }}
+            {{ form_widget(form.richContent) }}
+        </div>
+        <hr>
+        <div>
+            <button type="submit" class="btn btn--blue">Save</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

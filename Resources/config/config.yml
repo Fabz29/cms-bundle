@@ -1,0 +1,16 @@
+kms_froala_editor:
+    language: "fr"
+    serialNumber: "XXXX-XXXX-XXXX"
+    includeJQuery: false
+    includeCodeMirror: false
+    includeFontAwesome: true
+    includeJS: true
+    includeCSS: true
+    imageUploadFolder: "/froala"
+    # Disable autosave
+    saveInterval: 0
+    pluginsDisabled: ['spellChecker']
+    imageDefaultWidth: 0
+    htmlDoNotWrapTags: ['img']
+    # do not add <p> tag automatically
+    htmlUntouched: true
