@@ -6,7 +6,7 @@
   "require": {
     "php": ">=7.2",
     "symfony/framework-bundle": "^4.0",
-    "kms/froala-editor-bundle": "dev-master",
+    "kms/froala-editor-bundle": "^2.8",
     "doctrine/orm": "^2.5"
   },
   "license": "proprietary",
