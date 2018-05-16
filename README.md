@@ -1,15 +1,13 @@
-**LwbCmsBundle** is a **Symfony Bundle** allowing the management of 
-the manageable pages in an ergonomic way
+**Fbaz29CmsBundle** is a **Symfony Bundle** allows a typical user to modify their website directly from the front-end 
+interface
 
 Require
 ------------
 
 ####kms/froala-editor-bundle
 
-``` yaml
-// composer.json
-
-"kms/froala-editor-bundle": "dev-master",
+```
+require kms/froala-editor-bundle
 ```
 
 ####Configuration froala editor
@@ -37,7 +35,7 @@ kms_froala_editor:
 
 ####Override the vendor
 Unfortunately, in the case you use several editor. You can't load fraola editor because it use an 
- ID for select the element and Symfony doesn't allow to customize the id in form element and the bundle
+ ID for select the DOM element and Symfony doesn't allow to customize the id in form element and the bundle
  doesn't allow to configure this element. So you have to override the template in the javascript with that
  
 ``` twig
@@ -54,59 +52,55 @@ Installation
 ------------
 
 ####Step 1 : 
-* Just install it manually like a copy paste.
+```
+require fabz29/cms-bundle
+```
 
 #### Step 2 : Add the bundle to your AppKernel.php
 
 ``` php
-// app/AppKernel.php
+// config/AppKernel.php
 
-public function registerBundles()
-{
-  $bundles = array(
-    // ...
-        new Lwb\CmsBundle\LwbCmsBundle(),
-  );
-}
+Fabz29\CmsBundle\Fabz29CmsBundle::class => ['all' => true],
 ```
 
 #### Step 3 : Configure the bundle
 
 ``` yaml
-// app/config/parameters.yml
+// config/packages/fabz29_cms.yaml
 parameters:
-    lwb_cms:
-        # add cdn bootstrap
-        include_bootstrap: false
-        roles_allowed: ['ROLE_SUPER_ADMIN', 'ROLE_AGENT']
+    fabz29_cms:
+        roles_allowed: ['ROLE_ADMIN']
 ```
 
 ``` yaml
-// app/config/services.yml
-imports:
-    - { resource: "@LwbCmsBundle/Resources/config/services.yml" }
+// config/packages/routing.yml
+fabz29_cms:
+    resource: "@Fabz29CmsBundle/Controller/"
+    type: annotation
 ```
 
 #### Step 4 : Enable manager in Twig
 
 ``` yaml
-// app/config/config.yml
+// config/services.yml
 twig:
     globals:
-        block_manager: '@lwb_cms.block.manager'
+        block_manager: '@fabz29_cms.block.manager'
 ```
 
 ``` yaml
-// app/config/services.yml
-imports:
-    - { resource: "@LwbCmsBundle/Resources/config/services.yml" }
+// config/services.yml
+Fabz29\CmsBundle\Manager\BlockManager:
+    arguments:
+        $params: '%fabz29_cms%'
 ```
 
 How to use it
 -------------
 
-- in your database at lwb_cms_block table : 
-Add the html in rich_content field in the lwb_cms_block table in your data base and set the key_name field
+- in your database at fabz29_cms_block table : 
+Add the html in rich_content field in the fabz29_cms_block table in your data base and set the key_name field
 
 - in your twig template where the fuc* you want : 
     ``` twig
@@ -115,10 +109,9 @@ Add the html in rich_content field in the lwb_cms_block table in your data base 
 
 ## TODO
 - Add some tests (with <img>, <video> and more html tags)
-- Enable the installation by composer
 - optimize the assets (css, js) (today the assets are duplicated by the number of manager call by)
 
 ## License
 
-The bundle is developped by Lorweb and can be used only by Lorweb. 
-Copyright Lorweb. All Rights reserved
+The bundle is developped by Fabien Zanetti and can be used only by himself. 
+Copyright Fabien Zanetti. All Rights reserved
