@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class BlockController
  * @package Fabz29\CmsBundle\Controller
- *
- * @Route("/block")
  */
 class BlockController extends Controller
 {
@@ -22,8 +20,6 @@ class BlockController extends Controller
      * @param Request $request
      * @param Block $block
      * @return Response
-     *
-     * @Route("/edit/{keyName}", name="cms_block_edit", methods={"POST"})
      */
     public function editAction(Request $request, Block $block): Response
     {

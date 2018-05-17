@@ -1,3 +1,0 @@
-parameters:
-    fabz29_cms:
-        roles_allowed: ['ROLE_ADMIN']

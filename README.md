@@ -108,6 +108,7 @@ Add the html in rich_content field in the fabz29_cms_block table in your data ba
     ```
 
 ## TODO
+- Integrate froala into the bundle
 - Add some tests (with <img>, <video> and more html tags)
 - optimize the assets (css, js) (today the assets are duplicated by the number of manager call by)
 

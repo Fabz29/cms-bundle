@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Block
  *
- * @ORM\Table(name="fabz_cms_block")
+ * @ORM\Table(name="fabz29_cms_block")
  * @ORM\Entity(repositoryClass="Lwb\CmsBundle\Repository\BlockRepository")
  */
 class Block

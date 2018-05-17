@@ -1,0 +1,3 @@
+fabz29_cms_block_edit:
+    path: /block/edit/{keyName}
+    defaults: { _controller: Fabz29CmsBundle:Block:edit }

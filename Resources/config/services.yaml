@@ -1,0 +1,4 @@
+services:
+    fabz29_cms.block.manager:
+        class: Fabz29\CmsBundle\Manager\BlockManager
+        arguments: ['@doctrine.orm.entity_manager', '@security.authorization_checker', '@twig', '%fabz29_cms%']

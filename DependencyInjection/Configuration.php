@@ -21,7 +21,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode->
             children()->
-                arrayNode("roles_allowed")->end()->
+                arrayNode("roles_allowed")->canBeUnset()->prototype('scalar')->end()->
             end();
 
         return $treeBuilder;
