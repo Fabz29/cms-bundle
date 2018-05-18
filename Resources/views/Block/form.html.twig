@@ -3,7 +3,7 @@
     <label class="modal__bg" for="modal_{{ block.id }}"></label>
     <div class="modal__inner">
         <label class="modal__close" for="modal_{{ block.id }}"></label>
-        {{ form_start(form, {'method': 'post', 'action' : path('cms_block_edit', {KeyName : block.keyName}), 'attr': {'class' : 'cms_block_edit_form'} }) }}
+        {{ form_start(form, {'method': 'post', 'action' : path('fabz29_cms_block_edit', {keyName : block.keyName}), 'attr': {'class' : 'cms_block_edit_form'} }) }}
         <div class="form-group">
             {{ form_label(form.name) }}
             {{ form_widget(form.name) }}

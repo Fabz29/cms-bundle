@@ -36,7 +36,7 @@ class BlockManager
      * @param TwigEnvironment $twig
      * @param array $params
      */
-    public function __construct(EntityManager $em, AuthorizationCheckerInterface $authorizationChecker, Twig_Environment $twig, array $params)
+    public function __construct(EntityManager $em, AuthorizationCheckerInterface $authorizationChecker, \Twig_Environment $twig, array $params)
     {
         $this->em = $em;
         $this->twig = $twig;

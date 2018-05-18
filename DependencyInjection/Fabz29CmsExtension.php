@@ -25,7 +25,7 @@ class Fabz29CmsExtension extends Extension
         $container->setParameter('fabz29_cms.roles_allowed', $config['roles_allowed']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader->load('services.yaml');
     }
     
 }

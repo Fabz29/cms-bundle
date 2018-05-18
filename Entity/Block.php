@@ -9,7 +9,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Block
  *
  * @ORM\Table(name="fabz29_cms_block")
- * @ORM\Entity(repositoryClass="Lwb\CmsBundle\Repository\BlockRepository")
+ * @ORM\Entity(repositoryClass="Fabz29\CmsBundle\Repository\BlockRepository")
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="keyName",
+ *          column=@ORM\Column(
+ *              name     = "keyName",
+ *              length   = 191,
+ *              unique   = true
+ *          )
+ *      ),
+ * })
  */
 class Block
 {
