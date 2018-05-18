@@ -6,8 +6,8 @@ use Fabz29\CmsBundle\Entity\Block;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 class BlockType extends AbstractType
 {
@@ -15,14 +15,11 @@ class BlockType extends AbstractType
     {
         $builder->add('name', TextType::class, array(
             'label' => "Nom",
-            'attr' => array(
-                'class' => 'form-control'
-            )
         ));
-        $builder->add('richContent', FroalaEditorType::class, array(
+        $builder->add('richContent', TextareaType::class, array(
             'label' => "Contenu riche",
             'attr' => array(
-                'class' => 'form-control froala-editor',
+                'class' => 'froala-editor',
             )
         ));
     }

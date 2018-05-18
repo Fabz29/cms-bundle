@@ -1,6 +1,14 @@
-import '../css/app.scss';
+$('.cms-block-editable').click(function () {
+    var idElement = $(this).attr('data-modal-target');
+    $(idElement).addClass('active');
+    $(idElement).parent().addClass('active');
+});
 
-$('.modal').prependTo('body');
+$('.close-modal').click(function () {
+    $('.cms-modal-overlay, .cms-modal').removeClass('active');
+});
+
+$('.modal-overlay').prependTo('body');
 $('.cms_block_edit_form').submit(function (e) {
     e.preventDefault();
     $.ajax({
@@ -13,3 +21,4 @@ $('.cms_block_edit_form').submit(function (e) {
         },
     });
 });
+$('.froala-editor').froalaEditor();

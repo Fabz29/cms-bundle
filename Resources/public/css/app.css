@@ -1,147 +1,146 @@
-.modal {
-    opacity: 0;
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    text-align: left;
-    background: rgba(0, 0, 0, .7);
-    transition: opacity .50s ease;
-}
+@import 'froala_style.min.css';
+@import 'froala_editor.min.css';
 
-.modal__bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.cms-modal-button {
+    background-color: #0D52E9;
+    position: relative;
+    color: #fff;
+    border: none;
+    padding: 1.25em 2em;
+    font-size: 0.75em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.25s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.cms-modal-button:hover {
+    background: #0c4ddb;
+}
+.cms-modal-button:focus {
+    outline: none;
 }
 
-.modal-state {
-    display: none;
-}
-
-.modal-state:checked + .modal {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-state:checked + .modal .modal__inner {
-    top: 0;
-}
-
-.modal__inner {
-    transition: top .25s ease;
-    position: absolute;
-    top: -20%;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 50%;
-    margin: auto;
-    overflow: auto;
-    background: #fff;
-    border-radius: 5px;
-    padding: 1em 2em;
-    height: 50%;
-}
-
-.modal__close {
-    position: absolute;
-    right: 1em;
-    top: 1em;
-    width: 1.1em;
-    height: 1.1em;
-    cursor: pointer;
-}
-
-.modal__close:after,
-.modal__close:before {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 1.5em;
-    background: #ccc;
-    display: block;
-    transform: rotate(45deg);
-    left: 50%;
-    margin: -3px 0 0 -1px;
-    top: 0;
-}
-
-.modal__close:hover:after,
-.modal__close:hover:before {
-    background: #aaa;
-}
-
-.modal__close:before {
-    transform: rotate(-45deg);
-}
-
-@media screen and (max-width: 768px) {
-
-    .modal__inner {
-        width: 90%;
-        height: 90%;
-        box-sizing: border-box;
+/**
+ * Overlay
+ * -- only show for tablet and up
+ */
+@media only screen and (min-width: 40em) {
+    .cms-modal-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        background-color: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    }
+    .cms-modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
-.btn {
-    cursor: pointer;
-    background: #27ae60;
-    display: inline-block;
-    padding: .5em 1em;
-    color: #fff;
+.cms-modal {
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    background-color: #fff;
+    width: 600px;
+    max-width: 75rem;
+    min-height: 20rem;
+    padding: 1rem;
     border-radius: 3px;
+    opacity: 0;
+    overflow-y: auto;
+    visibility: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.cms-modal .close-modal {
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: 15px;
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), transform 0.6s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    transition-delay: 0.3s;
+}
+.cms-modal .close-modal svg {
+    width: 1.75em;
+    height: 1.75em;
+}
+.cms-modal .cms-modal-content {
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    transition-delay: 0.3s;
+}
+.cms-modal.active {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.cms-modal.active .cms-modal-content {
+    opacity: 1;
+}
+.cms-modal.active .close-modal {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    opacity: 1;
 }
 
-.btn:hover,
-.btn:focus {
-    background: #2ecc71;
+@media only screen and (max-width: 39.9375em) {
+    .cms-modal {
+        position: fixed;
+        top: 10%;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0;
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    .close-modal {
+        right: 20px !important;
+    }
 }
 
-.btn:active {
-    background: #27ae60;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .2) inset;
-}
-
-.btn--blue {
-    background: #2980b9;
-}
-
-.btn--blue:hover,
-.btn--blue:focus {
-    background: #3498db;
-}
-
-.btn--blue:active {
-    background: #2980b9;
-}
-
-btn--border{
-    background: #ffffff;
-    color: #808080;
-    border: 1px solid;
-}
-
-btn--border:hover{
-    background: #808080;
-    color: #ffffff;
-    transition: .50s ease;
-}
-btn--border:active{
-    background: #808080;
-    color: #ffffff;
-}
-
-.block_editable{
+.cms-block-editable{
     border-style: dotted;
     cursor:pointer;
     background-color: rgba(33, 76, 102, 0.15);
     padding: 10px;
+}
+
+.cms-form-row input{
+    width: 100%;
+}
+
+.cms-form{
+    margin-top: 20px;
 }
 

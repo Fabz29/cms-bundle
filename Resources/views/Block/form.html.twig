@@ -1,21 +1,28 @@
-<input class="modal-state" id="modal_{{ block.id }}" type="checkbox"/>
-<div class="modal">
-    <label class="modal__bg" for="modal_{{ block.id }}"></label>
-    <div class="modal__inner">
-        <label class="modal__close" for="modal_{{ block.id }}"></label>
-        {{ form_start(form, {'method': 'post', 'action' : path('fabz29_cms_block_edit', {keyName : block.keyName}), 'attr': {'class' : 'cms_block_edit_form'} }) }}
-        <div class="form-group">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.richContent) }}
-            {{ form_widget(form.richContent) }}
-        </div>
-        <hr>
-        <div>
-            <button type="submit" class="btn btn--blue">Save</button>
-        </div>
-        {{ form_end(form) }}
-    </div>
-</div>
+<div class="cms-modal-overlay">
+    <div class="cms-modal" id="modal_{{ block.id }}">
+
+        <a class="close-modal">
+            <svg viewBox="0 0 20 20">
+                <path fill="#000000"
+                      d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+            </svg>
+        </a><!-- close modal -->
+
+        <div class="cms-modal-content">
+            {{ form_start(form, {'method': 'post', 'action' : path('fabz29_cms_block_edit', {keyName : block.keyName}), 'attr': {'class' : 'cms-form'} }) }}
+            <div class="cms-form-row">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="cms-form-row">
+                {{ form_label(form.richContent) }}
+                {{ form_widget(form.richContent) }}
+            </div>
+            <div>
+                <button type="submit" class="cms-modal-button ">Save</button>
+            </div>
+            {{ form_end(form) }}
+        </div><!-- content -->
+
+    </div><!-- modal -->
+</div><!-- overlay -->

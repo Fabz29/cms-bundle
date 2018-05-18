@@ -115,7 +115,7 @@ class Block
     {
         return $this->keyName;
     }
-    
+
     /**
      * Set content.
      *
