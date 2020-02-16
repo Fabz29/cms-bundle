@@ -45,10 +45,26 @@ class BlockManager
     }
 
     /**
-     * @param $keyName
+     * @param string $keyName
      * @return mixed
      */
-    public function render($keyName)
+    public function getValue(string $keyName)
+    {
+
+        $block = $this->em->getRepository('Fabz29CmsBundle:Block')->findOneByKeyName($keyName);
+
+        if (!$block) {
+            throw new BlockException('The block with keyName "' . $keyName . '" is not found;');
+        }
+
+        return $block->getRichContent();
+    }
+
+    /**
+     * @param string $keyName
+     * @return mixed
+     */
+    public function render(string $keyName)
     {
         $isEditable = false;
 
